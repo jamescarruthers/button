@@ -61,6 +61,9 @@ public:
         timeNow = millis();
 
         if (timeNow - pollLast > pollDuration || pollDuration == 0)
+
+        pollLast = timeNow;
+
         {
 
             // add the current button state to the shift register, inverted because pull up
