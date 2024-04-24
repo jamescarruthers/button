@@ -23,6 +23,8 @@ void setup() {
 
 
 Poll the button and check the events
+* .press is the number of presses that have occured
+* .presses[] is an array of the presses and their duration (1 = short, 2 = long, 3 = extra long)
 ```
 void loop() {
 
@@ -31,8 +33,8 @@ void loop() {
   if (b1.event()) {
     Serial.print(b1.press);
     Serial.print(" ");
-    for (uint8_t i = 0; i < sizeof(b1.combi); i++) {
-      Serial.print(b1.combi[i]);
+    for (uint8_t i = 0; i < b1.press; i++) {
+      Serial.print(b1.presses[i]);
     }
     Serial.println();
   }
