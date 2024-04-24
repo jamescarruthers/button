@@ -32,7 +32,7 @@ private:
     bool eventInstantTrigger; // used to trigger an event
 
     uint8_t _press;           // number of times the button has been pressed
-    enum Duration _combi[12]; // an array to store length of presses
+    enum Duration _presses[12]; // an array to store length of presses
 
     unsigned long pollLast;
 
@@ -40,9 +40,9 @@ public:
     enum State state;        // current state of button
     uint8_t press;           // number of times the button has been pressed
     enum Duration duration;  // duration of current press
-    enum Duration combi[12]; // an array to store the combination of presses
+    enum Duration presses[12];  // an array to store the pressesnation of presses
 
-    unsigned long timeout = 200;        // the after the button is up where an event is triggered, this also affects the time between multiple presses
+    unsigned long timeout = 150;        // the after the button is up where an event is triggered, this also affects the time between multiple presses
     unsigned long timeshort = 200;      // the length of a short press
     unsigned long timelong = 600;       // the length of a long press
     unsigned long timeextralong = 1000; // the length of an extra long press
@@ -89,19 +89,19 @@ public:
                     // set timeUp for up timeout
                     timeUp = timeNow;
 
-                    // figure out the duration and add it to the combi array
+                    // figure out the duration and add it to the presses array
                     timeDuration = timeNow - timeDown;
                     if (timeDuration < timeshort) {
-                        _combi[_press] = SHORT;
+                        _presses[_press] = SHORT;
                     }
                     else if (timeDuration >= timeshort && timeDuration <= timeextralong) {
-                        _combi[_press] = LONG;
+                        _presses[_press] = LONG;
                     } 
                     else {
-                        _combi[_press] = EXTRALONG;
+                        _presses[_press] = EXTRALONG;
                     }
 
-                    duration = _combi[_press];
+                    duration = _presses[_press];
 
                     // keep track of the number of presses
                     _press++;
@@ -121,8 +121,8 @@ public:
                         // transfer private to public variables
                         press = _press;
                         _press = 0;
-                        memcpy(combi, _combi, sizeof(_combi));
-                        memset(_combi, 0, sizeof(_combi));
+                        memcpy(presses, _presses, sizeof(_presses));
+                        memset(_presses, 0, sizeof(_presses));
 
                         eventTrigger = true;
                     }
