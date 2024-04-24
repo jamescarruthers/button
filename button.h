@@ -49,7 +49,7 @@ public:
 
     unsigned long pollDuration = 1;     // how often should it poll - set to zero to poll every call
 
-    void begin(uint8_t _pin)
+    void init(uint8_t _pin)
     {
         pin = _pin;
         pinMode(pin, INPUT_PULLUP);
