@@ -23,6 +23,7 @@ void setup() {
 
 
 Poll the button and check the events
+Poll should be called every loop, the library internally rate limits the polling to 1ms by default.
 * .press is the number of presses that have occured
 * .presses[] is an array of the presses and their duration (1 = short, 2 = long, 3 = extra long)
 ```
