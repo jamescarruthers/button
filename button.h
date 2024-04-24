@@ -42,7 +42,7 @@ public:
     enum Duration duration;  // duration of current press
     enum Duration combi[12]; // an array to store the combination of presses
 
-    unsigned long timeout = 150;        // the after the button is up where an event is triggered, this also affects the time between multiple presses
+    unsigned long timeout = 200;        // the after the button is up where an event is triggered, this also affects the time between multiple presses
     unsigned long timeshort = 200;      // the length of a short press
     unsigned long timelong = 600;       // the length of a long press
     unsigned long timeextralong = 1000; // the length of an extra long press
