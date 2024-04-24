@@ -1,10 +1,11 @@
 # button
-(Yet another) button library to handle debounce and multiple combinations of short, long and extra-long presses
+(Yet another) button library to handle debounce and multiple combinations of short, long and extra-long presses.
+The library can keep track of mutliple short, long and extra long presses. It can detect things like a short-then-long press - or a short-short-long press.
 
 ## Usage
 
 
-Include the library and create a button object
+### Include the library and create a button object
 ```
 #include <button.h>
 
@@ -22,7 +23,7 @@ void setup() {
 ```
 
 
-Poll the button and check the events
+### Poll the button and check the events
 Poll should be called every loop, the library internally rate limits the polling to 1ms by default.
 * .press is the number of presses that have occured
 * .presses[] is an array of the presses and their duration (1 = short, 2 = long, 3 = extra long)
